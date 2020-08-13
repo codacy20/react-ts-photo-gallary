@@ -3,7 +3,7 @@ import "./photo-gallary.css";
 import { photos, Photo } from "./model";
 
 export default class PhotoGallary extends Component<{}, {}> {
-  photos = photos;
+  preLoadedPhotos = photos;
   constructor(props) {
     super(props);
     this.state = {
@@ -18,8 +18,9 @@ export default class PhotoGallary extends Component<{}, {}> {
   }
 
   like() {
-    this.photos[this.state.current].liked = !this.photos[this.state.current]
-      .liked;
+    this.preLoadedPhotos[this.state.current].liked = !this.preLoadedPhotos[
+      this.state.current
+    ].liked;
     this.forceUpdate();
   }
 
@@ -35,14 +36,23 @@ export default class PhotoGallary extends Component<{}, {}> {
     }
   }
 
+  componentDidMount() {
+    this.preLoadedPhotos.forEach(picture => {
+      const img = new Image();
+      img.src = picture.url;
+    });
+  }
+
   render() {
     let status = "";
     let navs = [];
-    if (this.photos[this.state.current].liked) {
+
+    if (this.preLoadedPhotos[this.state.current].liked) {
       status = <i class="material-icons">favorite</i>;
     } else {
       status = <i class="material-icons">favorite_border</i>;
     }
+
     for (let i = 0; i < 4; i++) {
       navs.push(
         <div
@@ -51,13 +61,31 @@ export default class PhotoGallary extends Component<{}, {}> {
         />
       );
     }
+
     return (
       <div className="container-image">
         <div className="swipe left" onClick={() => this.swipe(0)} />
         <div className="heart" onClick={() => this.like()}>
           {status}
         </div>
-        <img src={this.photos[this.state.current].url} />
+
+        <img
+          src={this.preLoadedPhotos[0].url}
+          className={this.state.current == 0 ? "show" : "hide"}
+        />
+        <img
+          src={this.preLoadedPhotos[1].url}
+          className={this.state.current == 1 ? "show" : "hide"}
+        />
+        <img
+          src={this.preLoadedPhotos[2].url}
+          className={this.state.current == 2 ? "show" : "hide"}
+        />
+        <img
+          src={this.preLoadedPhotos[3].url}
+          className={this.state.current == 3 ? "show" : "hide"}
+        />
+
         <div className="nav">{navs}</div>
         <div className="swipe right" onClick={() => this.swipe(1)} />
       </div>

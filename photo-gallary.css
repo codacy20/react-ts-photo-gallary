@@ -14,6 +14,13 @@
   border-radius: 15px;
 }
 
+.container-image img.show{
+    display: block;
+}
+.container-image img.hide{
+    display: none;
+}
+
 .container-image .nav{
   position: absolute;
   top: 385px;
