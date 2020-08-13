@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./photo-gallary.css";
+import "./photo-gallery.css";
 import { photos, Photo } from "./model";
 
-export default class PhotoGallary extends Component<{}, {}> {
+export default class PhotoGallery extends Component<{}, { current: number }> {
   preLoadedPhotos = photos;
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ export default class PhotoGallary extends Component<{}, {}> {
   }
 
   render() {
-    let status = "";
+    let status: Element = null;
     let navs = [];
 
     if (this.preLoadedPhotos[this.state.current].liked) {

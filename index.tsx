@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import PhotoGallary from "./photo-gallary";
+import PhotoGallery from "./photo-gallery";
 import "./style.css";
 
 interface AppProps {}
@@ -19,7 +19,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div className="container">
-        <PhotoGallary />
+        <PhotoGallery />
       </div>
     );
   }
