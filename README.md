@@ -1,3 +1,3 @@
-# react-ts-photo-gallary
+# react-ts-photo-gallery
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ts-photo-gallary)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-ts-photo-gallery)
